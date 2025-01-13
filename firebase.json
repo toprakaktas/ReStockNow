@@ -1,0 +1,25 @@
+{
+  "functions": [
+    {
+      "source": "functions",
+      "runtime": "nodejs18",
+      "codebase": "default",
+      "emulators": {
+        "firestore": {
+          "port": 8080
+        },
+        "pubsub": {
+          "port": 8085
+        }
+      },
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": []
+    }
+  ]
+}
