@@ -47,4 +47,4 @@ ios/Runner/GoogleService-Info.plist
 # Sensitive data
 .env
 .firebase/
-lib/firebase_options.dart
+/lib/firebase_options.dart
