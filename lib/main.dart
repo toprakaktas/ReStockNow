@@ -34,7 +34,8 @@ class MainApp extends StatelessWidget {
             home: const HomePage(),
             debugShowCheckedModeBanner: false,
             title: 'ReStockNow',
-            theme: ThemeData(
+            theme: ThemeData(useMaterial3: true,
+                //colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple)
                 primaryColor: lightButton, brightness: Brightness.light),
             darkTheme: ThemeData(
                 primaryColor: darkButton, brightness: Brightness.dark),
