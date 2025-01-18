@@ -1,62 +1,46 @@
 import 'package:flutter/material.dart';
 
-class StepData {
-  final String title;
-  final Widget content;
+class NotificationPreferences {
+  bool sms;
+  bool email;
+  bool pushNotifications;
 
-  StepData({required this.title, required this.content});
-}
+  NotificationPreferences({
+    this.sms = false,
+    this.email = false,
+    this.pushNotifications = false,
+  });
 
-List<Step> generateSteps({
-  required int currentStep,
-  required Function() onSubmit,
-}) {
-  return [
-    Step(
-      title: const Text('Step 1: Add Link'),
-      content: const TextField(
-        decoration: InputDecoration(
-          labelText: 'Item Link',
-          border: OutlineInputBorder(),
+  void updatePreferences({bool? sms, bool? email, bool? pushNotifications}) {
+    if (sms != null) this.sms = sms;
+    if (email != null) this.email = email;
+    if (pushNotifications != null) this.pushNotifications = pushNotifications;
+  }
+
+  Widget notificationPreferences() {
+    return Column(
+      children: [
+        CheckboxListTile(
+          title: const Text('SMS'),
+          value: true,
+          onChanged: (value) {},
         ),
-      ),
-      isActive: currentStep >= 0,
-    ),
-    Step(
-      title: const Text('Step 2: Choose Preferences'),
-      content: const Text('Size, Color, etc.'),
-      isActive: currentStep >= 1,
-    ),
-    Step(
-      title: const Text('Step 3: Notification Methods'),
-      content: Column(
-        children: [
-          CheckboxListTile(
-            title: const Text('SMS'),
-            value: true,
-            onChanged: (value) {},
-          ),
-          CheckboxListTile(
-            title: const Text('Email'),
-            value: false,
-            onChanged: (value) {},
-          ),
-          CheckboxListTile(
-            title: const Text('Push Notifications'),
-            value: true,
-            onChanged: (value) {},
-          ),
-        ],
-      ),
-      isActive: currentStep >= 2,
-    ),
-    Step(
-      title: const Text('Step 4: Review & Submit'),
-      content: ElevatedButton(
-        onPressed: onSubmit,
-        child: const Text('Submit'),
-      ),
-      isActive: currentStep >= 3,
-    ),
-  ];
+        CheckboxListTile(
+          title: const Text('Email'),
+          value: false,
+          onChanged: (value) {},
+        ),
+        CheckboxListTile(
+          title: const Text('Push Notifications'),
+          value: true,
+          onChanged: (value) {},
+        ),
+      ],
+    );
+  }
+
+  @override
+  String toString() {
+    return 'SMS: $sms, Email: $email, Push Notifications: $pushNotifications';
+  }
 }
